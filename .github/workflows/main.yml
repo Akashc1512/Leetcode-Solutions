@@ -1,0 +1,16 @@
+#2574. Left and Right Sum Differences
+
+from typing import List
+
+class Solution:
+    def leftRightDifference(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        leftSum, rightSum = 0, sum(nums)
+        ans = [0] * n
+
+        for i in range(n):
+            rightSum -= nums[i]
+            ans[i] = abs(leftSum - rightSum)
+            leftSum += nums[i]
+
+        return ans
